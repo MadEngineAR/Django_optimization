@@ -1,0 +1,57 @@
+{% extends 'adminapp/base.html' %}
+
+{% block content%}
+<div class="container-fluid">
+    <h1 class="mt-4">Категории продуктов</h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Категории продуктов
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Наименование категории</th>
+                        <th>Описание категории</th>
+                        <th>Активный</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Наименование категории</th>
+                        <th>Описание категории</th>
+                        <th>Активный</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td><a href="{% url 'adminapp:admin_product_categories_update' category.id %}"
+                               style="color: dodgerblue">
+                            {{ category.name }}
+                        </a></td>
+                        <td> {{ category.descriptions }}</td>
+                            {% if  category.is_active %}
+                                <td class="text-center" bgcolor="green">
+                                <i class="fas fa-check-circle"></i>
+                            {% else %}
+                                <td class="text-center" bgcolor="red">
+                                <i class="fas fa-times-circle"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'adminapp:admin_product_categories_create' %}">
+                <button class="btn btn-success">Создать категорию товара</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
