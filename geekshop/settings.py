@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-=bq^esc&#$)=vf1nly8w%f%k3(frqxg9r$za&a=x7$a9*-6a)k
 load_dotenv(BASE_DIR / '.env')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'social_django',
     'ordersapp',
 ]
+
+# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDh8GHbeIkRpqnnJmUKhqSstzZgpH1marLXi+3nAByV/R5ereaZrLgBRxgh3WNO38onurF9Jq2E0Jz5XOWmMXTy0eFYkg42RqhooIPoVKiv3JfAGM6hJyOSUfiFcv3ZjbR8qNyubkD7u+amEYx75Dx6F7JtRhrrWdhTZsGrE186T4REeV8N7qwUc3aqXEPWmeD7q/FlMIi2Gii9d+LP3a0HAGS1cijPeGYhpFY/hw5Uetv8k+mxeslEIwdAMYeqQAONHzvgT5P+WyHc+395id9sHaw766D0glpbKa9t21lQ0smRXEqDnsoQd86c1r4QFlAXfZ1Y9bYt0k0Y1fqFvJRrdZnKLPgF/PW7eBcTS06m+rkdP1VsCE+5oZo00a5KObEBnK9kB3Ah/Mr+j3Xeg7+9zxTEqdIwfgIcgQmI1sZAfab1VJvevzXEI4BXAwxQGs64NO4i7gwCLXJDdDkcYS0DSCEnD42J4mzDe/hOaX9ZTd8tJipNMfvLI2eKGgTUqpM= root@89-108-77-36.cloudvps.regruhosting.ru
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,10 +91,18 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'geekshop',
+        'USER': 'postgres',
     }
 }
 
